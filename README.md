@@ -4,6 +4,7 @@
 
 Install requirements:
 `pip install -r requirements.txt`
+Download `mars-small128.pb`, `yolov5m_pig_4_classes.pt` and paste into `weights` folder 
 
 ## Docker
 You can also build docker image and run the inference in the container.
