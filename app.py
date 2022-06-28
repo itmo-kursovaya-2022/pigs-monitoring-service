@@ -56,7 +56,7 @@ def upload_video():
         result_file_path = os.path.join(app.config['UPLOAD_FOLDER'], result_filename)
         file.save(file_path)
         flash('Video successfully uploaded and displayed below')
-        statistic = process_video(file_path, result_file_path, 'mask.jpg')
+        statistic = process_video(file_path, result_file_path, os.path.join('static', 'mask.jpg'))
         processed_statistic = _get_statistic_per_pig(statistic)
         print(processed_statistic)
         return render_template('upload.html', filename=result_filename, statistic=processed_statistic)
