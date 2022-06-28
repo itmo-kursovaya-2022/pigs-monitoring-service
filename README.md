@@ -17,3 +17,7 @@ To use the GPU, you need `--gpus=all` option. See the guide for more details.
 
 Example:
 `docker run --gpus=all -it --rm pigs/service`
+
+## Demo
+
+![App demo](static/demo.gif)
