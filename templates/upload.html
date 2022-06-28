@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid;
+}
+</style>
+</head>
+<body>
+<title>Python Flask - Video Upload and Play Example</title>
+<h2>Select a video to upload and play</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+{% if filename %}
+	<div style="margin: 10px auto;">
+		<img src="{{ url_for('display_video', filename=filename) }}" alt="this slowpoke moves"/>
+	</div>
+<table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Run</th>
+        <th>Walk</th>
+        <th>Eat</th>
+        <th>Lie</th>
+		<th>Stand</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pig in statistic %}
+        <tr>
+          <td>Pig {{ pig['id'] }}</td>
+          <td>{{ pig['run'] }}%</td>
+          <td>{{ pig['walk'] }}%</td>
+		  <td>{{ pig['eat'] }}%</td>
+          <td>{{ pig['lying'] }}%</td>
+          <td>{{ pig['standing'] }}%</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Upload">
+	</p>
+</form>
+</body>
+</html>
+
