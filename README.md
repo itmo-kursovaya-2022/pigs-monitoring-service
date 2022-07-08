@@ -23,7 +23,7 @@ Response:
     }
 ]
 ```
-### GET /video/<id>
+### GET /video/`<id>`
 Process video with `id`. 
 ```json
 Response:
