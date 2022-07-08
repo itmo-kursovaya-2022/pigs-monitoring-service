@@ -9,6 +9,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from yolo5.inference import YoloDetection
+from yolo5.utils.general import xyxy2xywhn
 
 
 @dataclass
@@ -20,6 +21,7 @@ class TrackedBox:
     score: float
     tracking_id: int
     class_name: str
+    xywhn: List = ()
 
     def __post_init__(self):
         self.width = self.x_max - self.x_min
@@ -67,7 +69,8 @@ class DeepsortTracker:
                 y_max=y_max,
                 score=track.detection.confidence,
                 tracking_id=tracking_id,
-                class_name=track.detection.activity
+                class_name=track.detection.activity,
+                xywhn=xyxy2xywhn(np.array([[y_min, y_min, x_max, y_max]], dtype=float), h=frame.shape[0], w=frame.shape[1]).tolist()[0]
             )
             tracked_bboxes.append(det_obj)  # Structure data, that we could use it with our draw_bbox function
         return tracked_bboxes
