@@ -8,7 +8,7 @@ Download `mars-small128.pb`, `yolov5m_pig_4_classes.pt` and paste into `weights`
 
 ## Endpoints
 
-### GET /video
+### GET /video/
 Get all videos from server
 
 ```json
